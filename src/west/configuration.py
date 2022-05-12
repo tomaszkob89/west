@@ -259,6 +259,7 @@ def _location(cfg: ConfigFile, topdir: Optional[PathType] = None) -> str:
             return env['WEST_CONFIG_LOCAL']
 
         if topdir:
+            logging.error(f"Returning config: {os.fspath(Path(topdir) / '.west' / 'config')}")
             return os.fspath(Path(topdir) / '.west' / 'config')
 
         # Might raise WestNotFound!
