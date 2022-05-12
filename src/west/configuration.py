@@ -36,6 +36,7 @@ lowest.
 '''
 
 import configparser
+import logging
 import os
 from pathlib import PureWindowsPath, Path
 import platform
@@ -279,7 +280,7 @@ def _gather_configs(cfg: ConfigFile, topdir: Optional[PathType]) -> List[str]:
             ret.append(_location(ConfigFile.LOCAL, topdir=topdir))
         except WestNotFound:
             pass
-
+    logging.error(ret)
     return ret
 
 def _ensure_config(configfile: ConfigFile, topdir: Optional[PathType]) -> str:
