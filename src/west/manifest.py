@@ -1128,6 +1128,7 @@ class Manifest:
                     'topdir':
                     util.west_topdir(start=os.path.dirname(source_file))
                 })
+                _logger.info(f"topdir: {topdir}")
         elif source_file is None:
             # Just topdir.
 

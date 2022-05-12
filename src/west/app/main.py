@@ -767,6 +767,15 @@ def dump_traceback():
     return name
 
 def main(argv=None):
+    LOGGING_FORMAT = "%(asctime)s:%(name)s:%(levelname)s:%(threadName)s:%(filename)s:%(funcName)s:%(lineno)d> %(message)s"
+    logger = logging.getLogger()
+    import pathlib
+    pathlib.Path("/tmp/west").mkdir(parents=True,exist_ok=True)
+    h = logging.FileHandler(filename="/tmp/west/log.txt", mode='w')
+    h.setLevel(logging.DEBUG)
+    f = logging.Formatter(LOGGING_FORMAT)
+    h.setFormatter(f)
+    logger.addHandler(h)
     # Silence validation errors from pykwalify, which are logged at
     # logging.ERROR level. We want to handle those ourselves as
     # needed.
@@ -805,10 +814,4 @@ BUILTIN_COMMAND_GROUPS = {
 }
 
 if __name__ == "__main__":
-    LOGGING_FORMAT = "%(asctime)s:%(name)s:%(levelname)s:%(threadName)s:%(filename)s:%(funcName)s:%(lineno)d> %(message)s"
-    logger = logging.getLogger()
-    h = logging.FileHandler(filename="/tmp/west/log.txt", mode='w')
-    f = logging.Formatter(ftm=LOGGING_FORMAT)
-    h.setFormatter(f)
-    logger.addHandler(h)
     main()
