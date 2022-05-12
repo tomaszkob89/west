@@ -805,4 +805,10 @@ BUILTIN_COMMAND_GROUPS = {
 }
 
 if __name__ == "__main__":
+    LOGGING_FORMAT = "%(asctime)s:%(name)s:%(levelname)s:%(threadName)s:%(filename)s:%(funcName)s:%(lineno)d> %(message)s"
+    logger = logging.getLogger()
+    h = logging.FileHandler(filename="/tmp/west/log.txt", mode='w')
+    f = logging.Formatter(ftm=LOGGING_FORMAT)
+    h.setFormatter(f)
+    logger.addHandler(h)
     main()
