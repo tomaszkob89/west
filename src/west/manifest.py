@@ -172,6 +172,7 @@ def _mpath(cp: Optional[configparser.ConfigParser] = None,
     if cp is None:
         cp = cfg._configparser()
     cfg.read_config(configfile=cfg.ConfigFile.LOCAL, config=cp, topdir=topdir)
+    _logger.error(cp)
 
     try:
         path = cp.get('manifest', 'path')
@@ -1112,6 +1113,7 @@ class Manifest:
                 # neither source_file nor topdir: search the filesystem
                 # for the workspace and use its manifest.path.
                 topdir = util.west_topdir()
+                _logger.error(topdir)
                 (mpath, mname) = _mpath(topdir=topdir)
                 kwargs.update({
                     'topdir': topdir,
