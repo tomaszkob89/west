@@ -172,7 +172,9 @@ def _mpath(cp: Optional[configparser.ConfigParser] = None,
     if cp is None:
         cp = cfg._configparser()
     cfg.read_config(configfile=cfg.ConfigFile.LOCAL, config=cp, topdir=topdir)
-    _logger.error(cp)
+    _logger.error(cfg.ConfigFile.LOCAL)
+    _logger.error(cp.items())
+    _logger.error(cp.items())
 
     try:
         path = cp.get('manifest', 'path')
