@@ -175,13 +175,13 @@ def _mpath(cp: Optional[configparser.ConfigParser] = None,
     _logger.error(cfg.ConfigFile.LOCAL)
     _logger.error(topdir)
 
-    try:
-        path = cp.get('manifest', 'path')
-        filename = cp.get('manifest', 'file', fallback=_WEST_YML)
+    # try:
+    path = cp.get('manifest', 'path')
+    filename = cp.get('manifest', 'file', fallback=_WEST_YML)
 
-        return (path, filename)
-    except (configparser.NoOptionError, configparser.NoSectionError) as e:
-        raise MalformedConfig('no "manifest.path" config option is set') from e
+    return (path, filename)
+    # except (configparser.NoOptionError, configparser.NoSectionError) as e:
+    #     raise MalformedConfig('no "manifest.path" config option is set') from e
 
 # Manifest import handling
 
