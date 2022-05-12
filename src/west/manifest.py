@@ -173,6 +173,7 @@ def _mpath(cp: Optional[configparser.ConfigParser] = None,
         cp = cfg._configparser()
     cfg.read_config(configfile=cfg.ConfigFile.LOCAL, config=cp, topdir=topdir)
     _logger.error(cfg.ConfigFile.LOCAL)
+    _logger.error(topdir)
     _logger.error(cp.items())
     _logger.error(cp.items())
 
