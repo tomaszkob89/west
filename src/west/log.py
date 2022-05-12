@@ -28,7 +28,7 @@ VERBOSE_VERY = 2
 VERBOSE_EXTREME = 3
 '''Extremely verbose output messages will be printed.'''
 
-VERBOSE = VERBOSE_NONE
+VERBOSE = VERBOSE_EXTREME
 '''Global verbosity level. VERBOSE_NONE is the default.'''
 
 #: Color used (when applicable) for printing with inf()
